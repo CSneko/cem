@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "id": "cem",
+  "version": "${version}",
+  "name": "cem",
+  "description": "A mod for Minecraft to modiy player model",
+  "authors": [
+    "CrystalNeko"
+  ],
+  "contact": {
+    "website": "https://github.com/CemMC/cem",
+    "repo": "https://github.com/CemMC/cem"
+  },
+  "license": "GPL-3.0",
+  "icon": "assets/cem/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "org.cneko.cem.client.CemClient"
+    ],
+    "main": [
+      "org.cneko.cem.Cem"
+    ]
+  },
+  "mixins": [
+    "cem.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": "*",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
