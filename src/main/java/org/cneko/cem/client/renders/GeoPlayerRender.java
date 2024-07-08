@@ -7,11 +7,12 @@ import software.bernie.geckolib.model.GeoModel;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
 
 public class GeoPlayerRender extends GeoEntityRenderer<Player> {
-
+    // TODO : 完善代码 & 添加API
     public GeoPlayerRender(EntityRendererProvider.Context renderManager) {
         super(renderManager,new GeoPlayerModel());
     }
 
+    // TODO : 添加API
     public static class GeoPlayerModel extends GeoModel<Player> {
         @Override
         public ResourceLocation getModelResource(Player animatable) {

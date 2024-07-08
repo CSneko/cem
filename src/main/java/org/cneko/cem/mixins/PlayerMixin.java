@@ -14,7 +14,7 @@ public class PlayerMixin implements GeoEntity {
     private final AnimatableInstanceCache geoCache = GeckoLibUtil.createInstanceCache(this);
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
-
+        // TODO: 写一个Fabric监听事件
     }
 
     @Override
