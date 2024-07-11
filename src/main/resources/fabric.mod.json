@@ -29,7 +29,8 @@
     "fabricloader": "*",
     "fabric": "*",
     "minecraft": "${minecraft_version}",
-    "geckolib": "*"
+    "geckolib": "*",
+    "ctlib": "*"
   },
   "custom": {
     "loom:injected_interfaces": {

@@ -17,6 +17,7 @@ public class GeoPlayerRender extends GeoEntityRenderer<Player> {
 
     @Override
     public void render(Player entity, float f, float g, PoseStack poseStack, MultiBufferSource multiBufferSource, int i) {
+    super.render(entity,f,g,poseStack,multiBufferSource,i);
         PlayerRenderEvents.RENDER_PLAYER.invoker().renderPlayer(entity, f, g, poseStack, multiBufferSource, i);
     }
 
@@ -24,17 +25,21 @@ public class GeoPlayerRender extends GeoEntityRenderer<Player> {
     public static class GeoPlayerModel extends GeoModel<Player> {
         @Override
         public ResourceLocation getModelResource(Player animatable) {
-            return ResourceLocation.fromNamespaceAndPath("cem", "geo/entity/player.geo.json");
+            return ResourceLocation.fromNamespaceAndPath("cem", "cemodel/model.json");
         }
 
         @Override
         public ResourceLocation getTextureResource(Player animatable) {
-            return ResourceLocation.fromNamespaceAndPath("cem", "textures/entity/player.png");
+            return ResourceLocation.fromNamespaceAndPath("cem", "cemodel/player/texture.png");
         }
 
         @Override
         public ResourceLocation getAnimationResource(Player animatable) {
-            return ResourceLocation.fromNamespaceAndPath("cem", "animations/entity/player.animation.json");
+            return ResourceLocation.fromNamespaceAndPath("cem", "cemoel/player/animation.json");
+        }
+
+        public ResourceLocation getIndexResource(Player animatable) {
+            return ResourceLocation.fromNamespaceAndPath("cem","cemodel/player/index.json");
         }
     }
 }

@@ -33,7 +33,9 @@ public class PlayerRenderEvents {
                     listener.registerControllers(controllers);
                 }
             });
-
+    /**
+     * Called when the player is rendering.
+     */
     public static Event<RenderPlayer> RENDER_PLAYER = EventFactory.createArrayBacked(RenderPlayer.class,
             (listeners) -> (entity, f, g, poseStack, multiBufferSource, i) -> {
                 for (RenderPlayer listener : listeners) {
@@ -45,10 +47,13 @@ public class PlayerRenderEvents {
                 return EventResults.PASS;
             });
 
+    /**
+     * Called when the player is playing an animation.
+     */
     public static Event<PlayAnim> PLAY_ANIM = EventFactory.createArrayBacked(PlayAnim.class,
-            (listeners) -> (event) -> {
+            (listeners) -> (player,event) -> {
                 for (PlayAnim listener : listeners) {
-                    EventResults result = listener.playAnim(event);
+                    EventResults result = listener.playAnim(player,event);
                     if (result != EventResults.PASS) {
                         return result;
                     }
@@ -66,6 +71,6 @@ public class PlayerRenderEvents {
         EventResults renderPlayer(Player entity, float f, float g, PoseStack poseStack, MultiBufferSource multiBufferSource, int i);
     }
     public interface PlayAnim {
-        EventResults playAnim(final AnimationState<Player> event);
+        EventResults playAnim(Player player,final AnimationState<Player> event);
     }
 }
