@@ -1,15 +1,11 @@
 package org.cneko.cem.mixins;
 
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.AbstractContainerMenu;
 import org.cneko.cem.client.api.events.EventResults;
 import org.cneko.cem.client.api.events.PlayerRenderEvents;
 import org.cneko.cem.utils.GeoPlayerUtil;
 import org.cneko.cem.utils.PlayerAnim;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
@@ -24,7 +20,7 @@ public abstract class PlayerMixin implements GeoEntity, PlayerAnim {
     private final AnimatableInstanceCache geoCache = GeckoLibUtil.createInstanceCache(this);
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
-        Player player = (Player)this;
+        Player player = (Player)(Object)this;
         GeoPlayerUtil.registerControllers(player,controllers);
         PlayerRenderEvents.REGISTER_CONTROLLERS.invoker().registerControllers(controllers);
     }
@@ -34,9 +30,9 @@ public abstract class PlayerMixin implements GeoEntity, PlayerAnim {
         return geoCache;
     }
 
-
+    @Override
     public <E extends Player> PlayState Anim(final AnimationState<Player> event) {
-        Player player = (Player)this;
+        Player player = (Player)(Object)this;
         EventResults result = PlayerRenderEvents.PLAY_ANIM.invoker().playAnim(player ,event);
         if(result == EventResults.CANCEL){
             return PlayState.STOP;

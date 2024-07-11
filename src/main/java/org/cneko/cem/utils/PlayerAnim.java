@@ -5,5 +5,7 @@ import software.bernie.geckolib.animation.AnimationState;
 import software.bernie.geckolib.animation.PlayState;
 
 public interface PlayerAnim {
-    PlayState playAnim(Player player, final AnimationState<Player> event);
+    default <E extends Player> PlayState Anim(AnimationState<Player> event) {
+        return PlayState.STOP;
+    }
 }
